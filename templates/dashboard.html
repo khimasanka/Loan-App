@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+</head>
+<body>
+<h1>Welcome to your dashboard, {{ username }}!</h1>
+<h2>Your current loan amount is ${{ loan_amount }}</h2>
+{% if error %}
+  <p>{{ error }}</p>
+{% endif %}
+<form action="{{ url_for('request_loan') }}" method="POST">
+  <label for="loan_amount">Request a loan:</label>
+  <input type="number" id="loan_amount" name="loan_amount" min="0" max="{{ max_loan_amount }}" required>
+  <button type="submit">Submit</button>
+</form>
+{% if pending_loans %}
+  <h3>Pending loan requests:</h3>
+  <ul>
+    {% for loan in pending_loans %}
+      <li>{{ loan['borrower'] }} has requested a loan of ${{ loan['amount'] }}. Votes: {{ loan['votes'] }}/{{ required_votes }}</li>
+      <a href="{{ url_for('approve_loan', loan_id=loan['id']) }}">Vote</a>
+    {% endfor %}
+  </ul>
+{% endif %}
+</body>
+</html>

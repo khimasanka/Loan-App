@@ -1,25 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 #from flask_session import Session
 
-"""
-app = Flask(__name__)
-
-@app.route('/')
-def index():
-    return "hello, world!"
-
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    if request.method == 'POST':
-        session['username'] = request.form['username']
-        return redirect(url_for('dashboard'))
-    return '''
-        <form method="post">
-            <p><input type="text" name="username"></p>
-            <p><input type="submit" value="Login"></p>
-        </form>
-    '''
-"""
 app = Flask(__name__)
 app.config['SESSION_TYPE'] = 'filesystem'
 app.secret_key = 'supersecretkey'
