@@ -4,7 +4,7 @@ from flask import Flask, render_template, request, redirect, url_for, session
 app = Flask(__name__)
 app.config['SESSION_TYPE'] = 'filesystem'
 app.secret_key = 'supersecretkey'
-#Session(app)
+#ession(app)
 
 
 @app.route('/login', methods=['GET', 'POST'])
